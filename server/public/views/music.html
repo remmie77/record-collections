@@ -1,2 +1,66 @@
-<h1>IN MUSIC</h1>
-{{ 2 === 2 }}
+<div class="container">
+    <div class="inputs">
+        <h1>IN MUSIC</h1>
+        <form ng-submit="mc.addAlbum(mc.albumToAdd)" id="albumForm">
+            <div class="card">
+                <input type="text" ng-model="mc.albumToAdd.artist" placeholder="artist/band">
+                <input type="text" ng-model="mc.albumToAdd.album" placeholder="album">
+                <input type="date" ng-model="mc.albumToAdd.date" placeholder="yyyy-mm-dd">
+                <!-- put in button to trigger toggle function on boolean own-wish to change from wish to own -->
+                <select form="albumForm" ng-model="mc.albumToAdd.own_wish">
+                    <option value="" disabled selected>Own, or wish to own</option>
+                    <option value=true>I own this album</option>
+                    <option value=false>I wish to own this album</option>
+                </select>
+                <input type="text" ng-model="mc.albumToAdd.image_path" placeholder="picture URL">
+                <!-- will this work in table referencing genre-id/ id ect. -->
+                <select ng-model="mc.albumToAdd.genre-id">
+                    <option value="">Select Genre</option>
+                    <option value=1>classical</option>
+                    <option value=2>country</option>
+                    <option value=3>folk</option>
+                    <option value=4>jazz</option>
+                    <option value=5>newage</option>
+                    <option value=6>reggae</option>
+                    <option value=7>rock</option>
+                    <option value=8>soundtrack</option>
+                    <option value=9>electronic</option>
+                    <option value=10>funk</option>
+                    <option value=11>soul</option>
+                    <option value=12>hip-hop</option>
+                    <option value=13>latin</option>
+                    <option value=14>pop</option>
+                    <option value=15>religious</option>
+                    <option value=16>traditional</option>
+                    <option value=17>international</option>
+                    <option value=18>r&b</option>
+                    <option value=19>rap</option>
+                </select>
+                <input type="submit" class="btn btn-outline-secondary">
+            </div>
+        </form>
+    </div>
+    <h2>Here is your record collection:</h2>
+    {{ 2 === 2 }}
+    <div>
+        <div ng-repeat="record in mc.records">
+            <div class="card mb-3">
+                <img ng-src="{{record.image-path}}" alt="record cover" class="card-img-top" />
+                <div class="card-body">
+                    <h4 class="card-title">Artist: {{record.artist}}</h4>
+                    <div class="card-text">Album: {{record.album}}</div>
+                    <div class="card-text">Release Date: {{record.release-date}}</div>
+                    <div class="card-text">Own/Wish: {{record.own-wish}}</div>
+                    <!-- i don't know how to 'refere' for genre name below -->
+                    <div class="card-text">Genre: {{record.genre-id}}</div>
+                </div>
+                <button ng-click="mc.deleteAlbum(record.id)"  class="btn btn-warning ">DELETE Album</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+                
+              
+    

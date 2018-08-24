@@ -5,23 +5,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Real-Estate-Listings</title>
+    <title>Record Collection</title>
     <script src="vendors/angular.min.js"></script>
     <script src="vendors/angular-route.min.js"></script>
     <script src="scripts/client.js"></script>
     <script src="scripts/controllers/music-controller.js"></script>
     <script src="scripts/controllers/genre-controller.js"></script>
-    <script src="scripts/controllers/wish-controller.js"></script>
     <link rel="stylesheet" href="vendors/bootstrap.min.css">
     <link rel="stylesheet" href="styles/styles.css">
 </head>
 
 <body ng-app="myApp">
     <div class="container">
-        {{ 2 === 2 }}
+        <!-- {{ 2 === 2 }} -->
         <header>
             <nav class="header">
-                <a href="/">MUSIC</a><a href="#!/genre">GENRES</a><a href="#!/wish">WISH LIST</a>
+                <a href="/">MUSIC</a><a href="#!/genre">GENRES</a>
             </nav>
         </header>
         <ng-view></ng-view>

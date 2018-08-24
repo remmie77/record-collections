@@ -12,9 +12,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json()); // This line is for angular
 app.use(express.static('server/public'));
 
+app.use('/music', homeRouter);
 
-
-app.use('/home', homeRouter);
 
 
 app.listen(PORT, () => {
