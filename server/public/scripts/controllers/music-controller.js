@@ -18,6 +18,19 @@ myApp.controller('MusicController', function ($http) {
         });
     };
 
+    mc.deleteAlbum = function (id) {
+        console.log('MusicController - DELETE - id of album to delete: ', id);
+        $http({
+            method: 'DELETE',
+            url: '/music/' + id
+        }).then(function (response) {
+            console.log(response);
+            mc.getAlbums();
+        }).catch(function (error) {
+            console.log('MusicController - DELETE - error ', error);
+        });
+    };
+
 
     mc.getAlbums();
 

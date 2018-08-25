@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router();
 const pool = require('../modules/pool.js');
 
-router.get('/', function(req,res) {
+router.get('/', function (req,res) {
     console.log('in home GET route');
     const query = 'SELECT * FROM "album";';
     pool.query(query).then((results) => {
@@ -11,8 +11,23 @@ router.get('/', function(req,res) {
     }).catch((error) => {
         console.log('error from GET home listings', error);
         res.sendStatus(500);
-    })
-})
+    });
+});
+
+router.delete('/:id', function (req,res) {
+    console.log('in home DELETE route', req.params.id);
+    const deleteThisRecord = req.params.id;
+    const query = 'DELETE FROM "album" WHERE "id"=$1 RETURNING *;';
+    pool.query (query, [deleteThisRecord]).then((results) => {
+        console.log(results.rows);
+        res.sendStatus(201);
+    }).catch((error) => {
+        res.sendStatus(500);
+    });
+});
+
+
+
 
 
 
