@@ -14,8 +14,8 @@
                 </select>
                 <input type="text" ng-model="mc.albumToAdd.image_path" placeholder="picture URL">
                 <!-- will this work in table referencing genre-id/ id ect. -->
-                <select ng-model="mc.albumToAdd.genre-id">
-                    <option value="">Select Genre</option>
+                <select form="albumForm" ng-model="mc.albumToAdd.genre_id">
+                    <option value="" disabled selected>Own, or wish to own</option>
                     <option value=1>classical</option>
                     <option value=2>country</option>
                     <option value=3>folk</option>
@@ -45,14 +45,14 @@
     <div>
         <div ng-repeat="record in mc.records">
             <div class="card mb-3">
-                <img ng-src="{{record.image-path}}" alt="record cover" class="card-img-top" />
+                <img ng-src="{{record.image_path}}" alt="record cover" class="card-img-top" />
                 <div class="card-body">
                     <h4 class="card-title">Artist: {{record.artist}}</h4>
                     <div class="card-text">Album: {{record.album}}</div>
-                    <div class="card-text">Release Date: {{record.release-date}}</div>
-                    <div class="card-text">Own/Wish: {{record.own-wish}}</div>
+                    <div class="card-text">Release Date: {{record.release_date}}</div>
+                    <div class="card-text">Own/Wish: {{record.own_wish}}</div>
                     <!-- i don't know how to 'refere' for genre name below -->
-                    <div class="card-text">Genre: {{record.genre-id}}</div>
+                    <div class="card-text">Genre: {{record.genre_id}}</div>
                 </div>
                 <button ng-click="mc.deleteAlbum(record.id)"  class="btn btn-warning ">DELETE Album</button>
             </div>
