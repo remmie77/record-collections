@@ -31,6 +31,21 @@ myApp.controller('MusicController', function ($http) {
         });
     };
 
+    mc.addAlbum = function (record) {
+        console.log('MusicController in addAlbum  - POST - record to add ', record);
+        $http({
+            method: 'POST',
+            url: '/music',
+            data: record
+        }).then(function (response) {
+            console.log('MusicController - addAlbum - response', response.data);
+            mc.getAlbums();
+            mc.albumToAdd = {};
+        }).catch(function (error) {
+            console.log('MusicController - POST - error ', error);
+        });
+    };
+
 
     mc.getAlbums();
 

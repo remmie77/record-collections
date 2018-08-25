@@ -26,6 +26,18 @@ router.delete('/:id', function (req,res) {
     });
 });
 
+router.post('/', function (req,res) {
+    const albumToAdd = req.body;
+    console.log('in home POST route ', albumToAdd);
+    const query = 'INSERT INTO "album" ("artist", "album", "release_date", "own_wish", "image_path", "genre_id") VALUES ($1, $2, $3, $4, $5, $6);';
+    pool.query(query, [albumToAdd.artist, albumToAdd.album, albumToAdd.release_date, albumToAdd.own_wish, albumToAdd.image_path, albumToAdd.genre_id]).then(() => {
+        res.sendStatus(201);
+    }).catch((error) => {
+        res.sendStatus(500);
+    });
+});
+
+
 
 
 
