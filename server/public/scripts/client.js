@@ -1,6 +1,6 @@
 console.log('JS');
 
-const myApp = angular.module( 'myApp', [ 'ngRoute' ] );
+const myApp = angular.module( 'myApp', [ 'ngRoute', 'angular.filter' ] );
 
 myApp.config( function( $routeProvider ){
     console.log('YASSSS MAAATE!!!!');

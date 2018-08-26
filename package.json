@@ -19,6 +19,7 @@
   "homepage": "https://github.com/remmie77/record-collections#readme",
   "dependencies": {
     "angular": "^1.7.3",
+    "angular-filter": "^0.5.17",
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
     "pg": "^7.4.3"

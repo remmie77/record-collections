@@ -2,6 +2,7 @@ myApp.controller('MusicController', function ($http) {
     console.log('MusicController hit');
     let mc = this;
     mc.records = [];
+    mc.genre = [];
 
     mc.getAlbums = function () {
         mc.records = [];
@@ -15,6 +16,21 @@ myApp.controller('MusicController', function ($http) {
             console.log('mc.records', mc.records);            
         }).catch(function (error) {
             console.log('error in GET album', error);
+        });
+    };
+
+    mc.getGenre = function () {
+        mc.genre = [];
+        console.log('in getAlbums');
+        $http({
+            method: 'GET',
+            url: '/music/getGenre' //this has to match 
+        }).then(function (response) {
+            console.log('MusicController - GET - response', response.data);
+            mc.genre = response.data;
+            console.log('mc.genre', mc.genre);            
+        }).catch(function (error) {
+            console.log('error in GET genre', error);
         });
     };
 
@@ -48,7 +64,7 @@ myApp.controller('MusicController', function ($http) {
 
 
     mc.getAlbums();
-
+    mc.getGenre();
 });//end
 
     // mc.addAlbum
