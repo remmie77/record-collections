@@ -17,9 +17,14 @@ router.get('/', function (req,res) {
 router.get('/getGenre', function (req,res) {
     const genres = req.body;
     console.log('in GET for /getGenre ', genres);
-    const query = 'SELET * FROM "genre"'
-    
-})
+    const query = 'SELET * FROM "genre";';
+    pool.query(query).then((results) => {
+        res.send(results.rows);
+    }).catch((error) => {
+        console.log('error from /getGenre genre ', error);
+        res.sendStatus(500);
+    });
+});
 
 router.delete('/:id', function (req,res) {
     console.log('in home DELETE route', req.params.id);
