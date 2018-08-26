@@ -33,6 +33,21 @@ myApp.controller('GenreController', function ($http) {
         });
     };
    
+    gc.deleteGenre = function (id) {
+        console.log('in deleteGenre');
+        $http({
+            method: 'DELETE',
+            url: '/music/deleteGenre/' + id
+        }).then(function (response) {
+            console.log('in response object in delete response', response.data);
+            if(response.data.length == 0){
+                alert('You can only delete genres which are not in use');
+            }
+            gc.getGenres();
+        }).catch(function (error) {
+            console.log('GenreController - DELETE - error ', error);
+        });
+    };
 
     gc.getGenres();
 });

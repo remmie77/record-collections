@@ -7,6 +7,7 @@
                 <input type="submit" class="btn btn-outline-secondary">
                 <!-- {{ 2 === 2 }} -->
             </div>
+        </form>
             <h2>Genres</h2>
             <div>
                 <table class="table">
@@ -17,11 +18,10 @@
                     </thead>
                     <tbody class="table-body" ng-repeat="genre in gc.genres">
                         <td>{{genre.genre}}</td>
-                        <td>22</td>
-                        <td><button>Delete</button></td>
+                        <td>{{genre.id}}</td>
+                        <td><button ng-click="gc.deleteGenre(genre.id)"  class="btn btn-warning">Delete</button></td>
                     </tbody>
                 </table>
             </div>
-        </form>
     </div>
 </div>

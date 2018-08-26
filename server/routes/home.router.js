@@ -28,13 +28,25 @@ router.get('/getGenre', function (req,res) {
     });
 });
 
-router.delete('/:id', function (req,res) {
+router.delete('/:id', function (req, res) {
     // console.log('in home DELETE route', req.params.id);
     const deleteThisRecord = req.params.id;
     const query = 'DELETE FROM "album" WHERE "id"=$1 RETURNING *;';
     pool.query (query, [deleteThisRecord]).then((results) => {
         // console.log(results.rows);
         res.sendStatus(201);
+    }).catch((error) => {
+        res.sendStatus(500);
+    });
+});
+
+router.delete('/deleteGenre/:id', function (req, res) {
+    console.log('in /deleteGenre/:id route', req.params.id);
+    const genreId = req.params.id;
+    const query = `DELETE FROM "genre" WHERE "genre"."id" NOT IN(SELECT "genre_id" FROM "album") AND "genre"."id" = $1 RETURNING *;`;
+    pool.query (query, [genreId]).then((results) => {
+        console.log('THIS IS WHAT WAS SENT FROM DELETE GENRE ROUTE',results.rows);
+        res.send(results.rows);
     }).catch((error) => {
         res.sendStatus(500);
     });
@@ -67,6 +79,7 @@ router.post('/newGenre', (req, res) => {
         res.sendStatus(500);
     });
 });
+
 
 
 
