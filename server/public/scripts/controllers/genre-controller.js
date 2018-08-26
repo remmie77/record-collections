@@ -1,9 +1,9 @@
 myApp.controller('GenreController', function ($http) {
     console.log('GenreController hit');
     let gc = this;
-    mc.genres = [];
+    gc.genres = [];
 
-    mc.getGenres = function () {
+    gc.getGenres = function () {
         gc.genres = [];
         console.log('in getGenres');
         $http({
@@ -19,5 +19,5 @@ myApp.controller('GenreController', function ($http) {
     }
 
 
-    mc.getGenres();
+    gc.getGenres();
 });

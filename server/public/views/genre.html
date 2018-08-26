@@ -4,7 +4,23 @@
         <form ng-submit="gc.addGenre(gc.genre)">
             <div class="card">
                 <input type="text" ng-model="gc.genre.genre" placeholder="New Genre Name">
-                {{ 2 === 2 }}
+                <input type="submit" class="btn btn-outline-secondary">
+                <!-- {{ 2 === 2 }} -->
+            </div>
+            <h2>Genres</h2>
+            <div>
+                <table class="table">
+                    <thead class="tablehead">
+                        <th>Genre</th>
+                        <th>Records by Genre</th>
+                        <th>Actions</th>
+                    </thead>
+                    <tbody class="table-body" ng-repeat="genre in gc.genres">
+                        <td>{{genre.genre}}</td>
+                        <td>22</td>
+                        <td><button>Delete</button></td>
+                    </tbody>
+                </table>
             </div>
         </form>
     </div>

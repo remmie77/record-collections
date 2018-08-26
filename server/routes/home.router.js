@@ -17,7 +17,7 @@ router.get('/', function (req,res) {
 router.get('/getGenre', function (req,res) {
     const genres = req.body;
     console.log('in GET for /getGenre ', genres);
-    const query = 'SELET * FROM "genre";';
+    const query = 'SELECT * FROM "genre";';
     pool.query(query).then((results) => {
         res.send(results.rows);
     }).catch((error) => {
@@ -40,6 +40,10 @@ router.delete('/:id', function (req,res) {
 
 router.post('/', function (req,res) {
     const albumToAdd = req.body;
+    albumToAdd.genre_id = parseInt(albumToAdd.genre_id);
+    if(albumToAdd.image_path == null || albumToAdd.image_path == "") {
+        albumToAdd.image_path = 'https://www.catprotection.com.au/wp-content/uploads/2014/11/4913786-cat-m.jpg';
+    }
     console.log('in home POST route ', albumToAdd);
     const query = 'INSERT INTO "album" ("artist", "album", "release_date", "own_wish", "image_path", "genre_id") VALUES ($1, $2, $3, $4, $5, $6);';
     pool.query(query, [albumToAdd.artist, albumToAdd.album, albumToAdd.release_date, albumToAdd.own_wish, albumToAdd.image_path, albumToAdd.genre_id]).then(() => {

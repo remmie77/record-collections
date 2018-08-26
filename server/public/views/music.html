@@ -14,7 +14,7 @@
                 </select>
                 <input type="text" ng-model="mc.albumToAdd.image_path" placeholder="picture URL">
                 <!-- will this work in table referencing genre-id/ id ect. -->
-                <select form="albumForm" ng-model="mc.albumToAdd.genreid">
+                <select form="albumForm" ng-model="mc.albumToAdd.genre_id" ng-option="">
                     <option value="" disabled selected>Genre</option>
                     <option value=1>classical</option>
                     <option value=2>country</option>
@@ -42,9 +42,10 @@
     </div>
     <h2>Here is your record collection:</h2>
     <!-- {{ 2 === 2 }} -->
-    <div>
+    <div class="row">
         <div ng-repeat="record in mc.records">
-            <div class="card mb-3">
+            <div class="clearfix" ng-if="$index % 8 == 0"></div>
+            <div class="card mb-3 col-6">
                 <img ng-src="{{record.image_path}}" alt="record cover" class="card-img-top" />
                 <div class="card-body">
                     <h4 class="card-title">Artist: {{record.artist}}</h4>
