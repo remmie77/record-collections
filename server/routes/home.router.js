@@ -14,6 +14,13 @@ router.get('/', function (req,res) {
     });
 });
 
+router.get('/getGenre', function (req,res) {
+    const genres = req.body;
+    console.log('in GET for /getGenre ', genres);
+    const query = 'SELET * FROM "genre"'
+    
+})
+
 router.delete('/:id', function (req,res) {
     console.log('in home DELETE route', req.params.id);
     const deleteThisRecord = req.params.id;

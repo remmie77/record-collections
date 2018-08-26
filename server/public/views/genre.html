@@ -1,2 +1,11 @@
-<H1>IN GENRE</H1>
-<!-- {{ 2 === 2 }} -->
+<div class="container">
+    <div class="inputs">
+        <h2>Add Genre</h2>
+        <form ng-submit="gc.addGenre(gc.genre)">
+            <div class="card">
+                <input type="text" ng-model="gc.genre.genre" placeholder="New Genre Name">
+                {{ 2 === 2 }}
+            </div>
+        </form>
+    </div>
+</div>
