@@ -18,6 +18,21 @@ myApp.controller('GenreController', function ($http) {
         });
     }
 
+    gc.addGenre = function (genre) {
+        console.log('in addGenre');
+        $http({
+            method: 'POST',
+            url: '/music/newGenre',
+            data: genre 
+        }).then(function (response) {
+            console.log('GenreController - addGenre - response', response.data);
+            gc.getGenres();
+            gc.genre = {};
+        }).catch(function (error) {
+            console.log('GenreController - POST - error ', error);
+        });
+    };
+   
 
     gc.getGenres();
 });

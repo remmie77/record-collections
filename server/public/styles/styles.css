@@ -4,6 +4,7 @@
 
 .header {
     background-color: lavender;
+    height: 60px;
 }
 
 .inputs {
@@ -27,12 +28,16 @@ form {
 
 a {
     text-align: center;
-    margin: 24px;
-    padding: 20px;
-    color: rgb(64, 165, 224);
+    /* margin: 24px; */
+    /* padding: 20px; */
+    /* color: rgb(64, 165, 224); */
 }
 
 nav {
     height: 40px;
     padding-top: 8px;
 }
+
+/* header {
+    height: 80px;
+} */
