@@ -4,7 +4,7 @@ const pool = require('../modules/pool.js');
 
 router.get('/', function (req,res) {
     // console.log('in home GET route');
-    const query = `SELECT "artist", "album", "release_date", "own_wish", "image_path", "genre_id", "genre"."genre" FROM "album" 
+    const query = `SELECT "album"."id", "artist", "album", "release_date", "own_wish", "image_path", "genre_id", "genre"."genre" FROM "album" 
     JOIN "genre" ON "album"."genre_id" = "genre"."id";`;
     // const query = 'SELECT * FROM "album";';
     pool.query(query).then((results) => {
