@@ -5,12 +5,12 @@
             <div class="card">
                 <input type="text" ng-model="mc.albumToAdd.artist" placeholder="artist/band">
                 <input type="text" ng-model="mc.albumToAdd.album" placeholder="album">
-                <input type="date" ng-model="mc.albumToAdd.date" placeholder="yyyy-mm-dd">
+                <input type="date" ng-model="mc.albumToAdd.release_date">
                 <!-- put in button to trigger toggle function on boolean own-wish to change from wish to own -->
                 <select form="albumForm" ng-model="mc.albumToAdd.own_wish">
                     <option value="" disabled selected>Own, or wish to own</option>
-                    <option value=true>I own this album</option>
-                    <option value=false>I wish to own this album</option>
+                    <option value="Wish to Own">I own this album</option>
+                    <option value="Own">I wish to own this album</option>
                 </select>
                 <input type="text" ng-model="mc.albumToAdd.image_path" placeholder="picture URL">
                 <!-- will this work in table referencing genre-id/ id ect. -->
@@ -24,7 +24,8 @@
     </div>
     <h2>Here is your record collection:</h2>
     <!-- {{ 2 === 2 }} -->
-    <div>
+    <div class="inline new">
+            <!-- class="row" -->
         <div class="row" ng-repeat="record in mc.records">
             <div class="card mb-3 col-3">
                 <img ng-src="{{record.image_path}}" alt="record cover" class="card-img-top" />
@@ -33,7 +34,6 @@
                     <div class="card-text">Album: {{record.album}}</div>
                     <div class="card-text">Release Date: {{record.release_date | date : 'MM-dd-yyyy'}}</div>
                     <div class="card-text">Own/Wish: {{record.own_wish}}</div>
-                    <!-- i don't know how to 'refere' for genre name below -->
                     <div class="card-text">Genre: {{record.genre}}</div>
                 </div>
                 <button ng-click="mc.deleteAlbum(record.id)"  class="btn btn-warning ">DELETE Album</button>
